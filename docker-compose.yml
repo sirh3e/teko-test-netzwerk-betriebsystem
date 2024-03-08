@@ -1,0 +1,52 @@
+version: '3.10'
+
+services:
+  proxy:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - proxy_data:/etc/nginx/
+    ports:
+      - "8080:80"
+        #depends_on:
+        #- app
+    networks:
+      - app_networks
+      - proxy_networks
+ # app:
+ #   build: 
+ #     context: .
+  #    dockerfile: app.Dockerfile
+ #   depends_on:
+ #     - db
+ #   restart: always
+ #   volumes:
+ #     - app_data:/usr/src/app
+ #   networks:
+ #     - app_networks
+ #     - db_networks
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - db_networks
+
+volumes:
+  app_data: {}
+  db_data: {}
+  proxy_data: {}
+
+networks:
+  app_networks: {}
+  db_networks: {}
+  proxy_networks: {}
