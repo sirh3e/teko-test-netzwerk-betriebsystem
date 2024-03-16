@@ -1,0 +1,20 @@
+#This document must be save on the debian on /etc/systemd/system/<service name>.service
+[Unit]
+Description=Docker Compose
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+Restart=always
+User=root
+Group=docker
+WorkingDirectory=/home/student/NodeJS-08-03-2024
+ExecPreStart=/usr/bin/docker-compose -f docker-compose.yml down
+ExecStart=/usr/bin/docker-compose -f docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f docker-compose.yml down
+
+
+
+[Install]
+WantedBy=multi-user.target
