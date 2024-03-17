@@ -1,5 +1,8 @@
 DC = docker-compose
 
+.PHONY: all build clean down up rebuild install
+all: build up
+
 build:
 	$(DC) build
 
@@ -20,8 +23,3 @@ install:
 	
 	chmod +x scripts/install-zabbix-agent.sh
 	# sudo scripts/install-zabbix-agent.sh
-
-
-all: build up
-
-.PHONY: all build clean down up rebuild
