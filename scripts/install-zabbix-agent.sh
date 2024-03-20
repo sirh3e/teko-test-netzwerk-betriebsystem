@@ -5,7 +5,7 @@
 
 # Define Zabbix Server IP and Hostname for the agent
 ZABBIX_SERVER_IP="10.114.1.6"
-AGENT_HOSTNAME="marvinhuber-pi-zabbix-agent"
+AGENT_HOSTNAME="" # marvinhuber-pi-zabbix-agent
 
 echo "Starting Zabbix Agent installation..."
 
