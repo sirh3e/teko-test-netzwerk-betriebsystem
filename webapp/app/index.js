@@ -66,7 +66,7 @@ db.sync().then(() => {
     // app.use(authenticateJWT);
     
     app.get("/login", async function(req,res) {
-        console.log(SECRET_KEY);
+        console.log(SECRET_KEY + ' from .env file');
         res.sendFile(path.join(__dirname, 'web', 'login.html'));
     });
 
