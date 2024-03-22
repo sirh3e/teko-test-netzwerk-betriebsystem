@@ -9,11 +9,10 @@ Type=simple
 Restart=always
 User=root
 Group=docker
-WorkingDirectory=/home/student/NodeJS-08-03-2024
-ExecPreStart=/usr/bin/docker-compose -f docker-compose.yml down
-ExecStart=/usr/bin/docker-compose -f docker-compose.yml up
-ExecStop=/usr/bin/docker-compose -f docker-compose.yml down
-
+WorkingDirectory=/home/student/teko-test-netzwerk-betriebsystem
+ExecPreStart=/usr/bin/docker compose -f docker-compose.yml down
+ExecStart=/usr/bin/docker compose -f docker-compose.yml up
+ExecStop=/usr/bin/docker compose -f docker-compose.yml down
 
 
 [Install]

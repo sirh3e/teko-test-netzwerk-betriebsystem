@@ -1,4 +1,4 @@
-DC = docker-compose
+DC = docker compose
 
 .PHONY: all build clean down up rebuild install
 all: build up
