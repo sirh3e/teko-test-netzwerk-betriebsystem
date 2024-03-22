@@ -5,6 +5,7 @@ const formidable = require('express-formidable');
 //const bcrypt = require("bcrypt");
 const models = require('./models');
 const controller = require('./controller');
+const path = require('path');
 
 const db = models.database;
 
