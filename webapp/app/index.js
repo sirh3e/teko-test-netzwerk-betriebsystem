@@ -62,45 +62,11 @@ db.sync().then(() => {
     // app.use(authenticateJWT);
     
     app.get("/login", async function(req,res) {
-    
-        res.send(
-        '<form method="POST" action="">'
-            + '<p>'
-                + '<label for="username">Username</label>'
-                + '<input type="text" name="username" id="login_username">'
-            + '</p>'
-            + '<p>'
-                + '<label for="password">Password</label>'
-                + '<input type="password" name="password" id="login_password">'
-            + '</p>'
-            + '<p>'
-                + '<input type="submit" name="submit" id="login_submit" value="submit">'
-            + '</p>'
-        + '</form>'
-        
-        
-        );
+        res.sendFile(path.join(__dirname, 'web', 'login.html'));
     });
 
     app.get("/register", async function(req,res) {
-    
-        res.send(
-        '<form method="POST" action="">'
-            + '<p>'
-                + '<label for="username">Username</label>'
-                + '<input type="text" name="username" id="login_username">'
-            + '</p>'
-            + '<p>'
-                + '<label for="password">Password</label>'
-                + '<input type="password" name="password" id="login_password">'
-            + '</p>'
-            + '<p>'
-                + '<input type="submit" name="submit" id="login_submit" value="register">'
-            + '</p>'
-        + '</form>'
-        
-        
-        );
+        res.sendFile(path.join(__dirname, 'web', 'register.html'));
     });
     
     app.use(formidable());
