@@ -6,6 +6,9 @@ const formidable = require('express-formidable');
 const models = require('./models');
 const controller = require('./controller');
 const path = require('path');
+require('dotenv').config();
+
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const db = models.database;
 
@@ -24,7 +27,7 @@ db.sync().then(() => {
         req.body.username 
         req.body.password
     
-        const token = jwt.sign({username: req.body.username, password: req.body.password}, "MySecretKeyYesThisIsSecret", {
+        const token = jwt.sign({username: req.body.username, password: req.body.password}, SECRET_KEY, {
             expiresIn: "24h"
         });
     
@@ -44,7 +47,7 @@ db.sync().then(() => {
         if(authHeader) {
             const token = authHeader.split(" ")[1];
     
-            jwt.verify(token, "MySecretKeyYesThisIsSecret", (err, user) => {
+            jwt.verify(token, SECRET_KEY, (err, user) => {
                 if (err) {
                     return res.sendStatus(403);
                 };
@@ -63,6 +66,7 @@ db.sync().then(() => {
     // app.use(authenticateJWT);
     
     app.get("/login", async function(req,res) {
+        console.log(SECRET_KEY);
         res.sendFile(path.join(__dirname, 'web', 'login.html'));
     });
 
