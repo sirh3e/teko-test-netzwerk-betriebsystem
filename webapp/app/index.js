@@ -62,11 +62,11 @@ db.sync().then(() => {
     // app.use(authenticateJWT);
     
     app.get("/login", async function(req,res) {
-        res.sendFile(path.join(__dirname, 'web', 'login.html'));
+        res.sendFile(path.join('.', 'web', 'login.html'));
     });
 
     app.get("/register", async function(req,res) {
-        res.sendFile(path.join(__dirname, 'web', 'register.html'));
+        res.sendFile(path.join('.', 'web', 'register.html'));
     });
     
     app.use(formidable());
